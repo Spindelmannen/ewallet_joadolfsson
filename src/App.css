@@ -53,6 +53,7 @@ font-size: 15px;
 }
 .cardOwner, .validDate{
   font-size: 14px;
+  text-transform: uppercase;
 }
 .cardButtonDel, .cardButtonAct{
  

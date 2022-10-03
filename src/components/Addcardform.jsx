@@ -10,8 +10,7 @@ import { createCard }  from "../Slicer/activeCardSlice"
 
 function Addcardform() {
     const location = useLocation();
- 
-      console.log(location.state.name.first);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -30,6 +29,10 @@ function Addcardform() {
         let cardExpiresValue = document.querySelector("#cardExpires").value;
         let cardCcvValue = document.querySelector("#cardCCV").value;
         let cardVendorValue = document.querySelector("#vendor").value;
+
+        if(cardNumberValue.length > 16 || cardNumberValue.length < 16){
+            alert("Card Number should be 16 numbers!")
+        }
 
         dispatch(createCard({ //data från input av user. createCard en action som vi dispatchar
                 vendor: cardVendorValue,
@@ -62,11 +65,11 @@ function Addcardform() {
 
 
             <label htmlFor="cardHolder">CARDHOLDER NAME</label>
-            <input type="text" value={cardInfoHolder} placeholder={name} onChange={(e)=>setCardInfoHolder(e.target.value)} id='cardHolder'/>
+            <input type="text" value={cardInfoHolder} disabled placeholder={name} onChange={(e)=>setCardInfoHolder(e.target.value)} id='cardHolder'/> {/* lägger in username här med hjälp av location */}
 
 
             <label htmlFor="cardExpires">VALID THRU</label>
-            <input type="text" value={cardInfoExpires} onChange={(e)=>setCardInfoExpires(e.target.value)} id='cardExpires'/>
+            <input type="month" value={cardInfoExpires} onChange={(e)=>setCardInfoExpires(e.target.value)} id='cardExpires'/>
 
 
             <label htmlFor="cardCCV">CCV</label>
@@ -79,7 +82,7 @@ function Addcardform() {
                 <option value="Nordea">Nordea</option>
                 <option value="SEB">SEB</option>
                 <option value="Swedbank">Swedbank</option>
-                 <option value="ICA-Banken">ICA Banken</option> {/*valuet renderas ut på det skapade bankkortet, bugg på active card om valuen har två valutes dvs mellanslag */}
+                <option value="ICA-Banken">ICA Banken</option> {/*valuet renderas ut på det skapade bankkortet, bugg på active card om valuen har två valutes dvs mellanslag */}
             </select>
             <button onClick={(e) => handleSubmit(e)}> Create Card</button>
         </form>   
