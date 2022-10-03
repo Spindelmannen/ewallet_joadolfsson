@@ -2,16 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from 'react-router-dom'; //obs browserrouter är nu router
+import store from './redux/configureStore'
+import { Provider } from 'react-redux';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+
+  
+    <Router>
+      {/* kopplar upp redux configureStoren med en provider, nu har vi tillgång till storen */}
+      <Provider store={store}> 
+        <App />
+      </Provider>
+    </Router>
+  
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
