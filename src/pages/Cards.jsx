@@ -12,12 +12,12 @@ const Cards = () => {
         dispatch(getCardUser())
     }, [dispatch])
   
-    //HÄMTA STATE
+    
     const { userInfo, cards } = useSelector((state) => {
         return state.user})
 
         
-    //HÄMTA ANVÄNDARE
+    //renderar användarens nya kort 
     return(
         <>
      {cards && cards.map((singleUser, i) => (
