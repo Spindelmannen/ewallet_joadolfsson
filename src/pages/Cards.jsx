@@ -17,7 +17,7 @@ const Cards = () => {
         return state.user})
 
         
-    //renderar användarens nya kort 
+    //renderar användarens kort med användarens data/info
     return(
         <>
      {cards && cards.map((singleUser, i) => (
